@@ -1,4 +1,4 @@
-package com.mahadi.sm.controller;
+package com.mahadi.outside.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
