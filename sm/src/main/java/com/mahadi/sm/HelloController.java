@@ -1,10 +1,9 @@
-package com.mahadi.outside.controller;
+package com.mahadi.sm;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-
-import static tools.jackson.databind.type.LogicalType.Map;
 
 @RestController
 public class HelloController {
@@ -24,8 +23,18 @@ public class HelloController {
     }
 
     @GetMapping("/map/searchs")
-    public String search(@RequestParam  Map<String,String> query) {
+    public String search2(@RequestParam  Map<String,String> query) {
         return "Hello " + query.get("query");
+    }
+
+    @GetMapping("/map/searchs2")
+    public String searchRequestHeader(@RequestHeader(value = "aa" ,required = false,defaultValue = "faaa") String query ) {
+        return "Hello " + query;
+    }
+
+    @GetMapping("/map/searchs3")
+    public String searchRequestHeader(@RequestHeader HttpHeaders headers ) {
+        return "Hello " + headers.get("aa");
     }
 
 //    @GetMapping({"{userid}/posts/{postid}"})
