@@ -12,21 +12,21 @@ import static tools.jackson.databind.type.LogicalType.Map;
 public class HelloController {
 
 
-    @GetMapping({"/home/name/{name-id}/post/{post-id}","/home/name/{name-id}"})
-    public String sayHello(@PathVariable("name-id") Integer nameId, @PathVariable(name = "post-id" ,required = false) Integer postId) {
-        if (postId == null) {
-            return "Hello " + nameId;
-        }
+//    @GetMapping({"/dummy/users/{userid}/posts/{postid}","/api/dummy/users/{userid}"})
+//    public String sayHello(@PathVariable("userid") Integer nameId, @PathVariable(name = "postid" ,required = false) Integer postId) {
+//        if (postId == null) {
+//            return "Hello " + nameId;
+//        }
+//
+//       return "Hello " + nameId + " " + postId;
+//    }
 
-       return "Hello " + nameId + " " + postId;
-    }
-
-    @GetMapping({"/h/name/{name-id}/post/{post-id}"})
+    @GetMapping({"/dummy/users/{userid}/posts/{postid}"})
     public String sayHello(@PathVariable Map<String,String> j   ) {
-        if (j.get("post-id") == null) {
-            return "Hello " + j.get("name-id");
+        if (j.get("postid") == null) {
+            return "Hello " + j.get("userid");
         }
 
-        return "Hello " + j.get("name-id") + " h  " + j.get("post-id");
+        return "Hello " + j.get("userid") + " h  " + j.get("postid");
     }
 }
