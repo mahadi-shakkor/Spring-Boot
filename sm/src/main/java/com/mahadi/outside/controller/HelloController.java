@@ -18,6 +18,15 @@ public class HelloController {
 
        return "Hello " + nameId + " " + postId;
     }
+    @GetMapping("/searchs")
+    public String search(@RequestParam String query) {
+        return "Hello " + query;
+    }
+
+    @GetMapping("/map/searchs")
+    public String search(@RequestParam  Map<String,String> query) {
+        return "Hello " + query.get("query");
+    }
 
 //    @GetMapping({"{userid}/posts/{postid}"})
 //    public String sayHello(@PathVariable Map<String,String> j   ) {
