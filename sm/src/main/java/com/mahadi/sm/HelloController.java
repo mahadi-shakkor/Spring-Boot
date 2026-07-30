@@ -1,8 +1,7 @@
 package com.mahadi.sm;
 
 import com.mahadi.sm.dto.ProfileDto;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.RequestEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -46,12 +45,12 @@ public class HelloController {
     }
 
     @GetMapping("/req-entity")
-    public String show(RequestEntity<ProfileDto> requestEntity) {
-
-        return requestEntity.getBody().toString();
+    public ResponseEntity<String> show(RequestEntity<ProfileDto> requestEntity) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .header("Content-Type", "application/json")
+                .body(requestEntity.getBody().toString());
     }
-
-
 }
 
 
