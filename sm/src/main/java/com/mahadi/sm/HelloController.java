@@ -2,6 +2,7 @@ package com.mahadi.sm;
 
 import com.mahadi.sm.dto.ProfileDto;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.RequestEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -10,38 +11,48 @@ import java.util.Map;
 public class HelloController {
 
 
-    @RequestMapping(value = {"/dummy/users/{userid}/posts/{postid}"},method = {RequestMethod.GET,RequestMethod.POST})
-    public String sayHello(@PathVariable("userid") Integer nameId, @PathVariable(name = "postid" ,required = false) Integer postId) {
+    @RequestMapping(value = {"/dummy/users/{userid}/posts/{postid}"}, method = {RequestMethod.GET, RequestMethod.POST})
+    public String sayHello(@PathVariable("userid") Integer nameId, @PathVariable(name = "postid", required = false) Integer postId) {
         if (postId == null) {
             return "Hello " + nameId;
         }
 
-       return "Hello " + nameId + " " + postId;
+        return "Hello " + nameId + " " + postId;
     }
+
     @GetMapping("/searchs")
     public String search(@RequestParam String query) {
         return "Hello " + query;
     }
 
     @GetMapping("/map/searchs")
-    public String search2(@RequestParam  Map<String,String> query) {
+    public String search2(@RequestParam Map<String, String> query) {
         return "Hello " + query.get("query");
     }
 
     @GetMapping("/map/searchs2")
-    public String searchRequestHeader(@RequestHeader(value = "aa" ,required = false,defaultValue = "faaa") String query ) {
+    public String searchRequestHeader(@RequestHeader(value = "aa", required = false, defaultValue = "faaa") String query) {
         return "Hello " + query;
     }
 
     @GetMapping("/map/searchs3")
-    public String searchRequestHeader(@RequestHeader HttpHeaders headers ) {
+    public String searchRequestHeader(@RequestHeader HttpHeaders headers) {
         return "Hello " + headers.get("aa");
     }
 
     @GetMapping("/show")
     public String show(@RequestBody ProfileDto profile) {
-        return "Hello World"+ profile;
+        return "Hello World" + profile.toString();
     }
+
+    @GetMapping("/req-entity")
+    public String show(RequestEntity<ProfileDto> requestEntity) {
+
+        return requestEntity.getBody().toString();
+    }
+
+
+}
 
 
 //    @GetMapping({"{userid}/posts/{postid}"})
@@ -54,4 +65,4 @@ public class HelloController {
 //    }
 
 
-}
+
