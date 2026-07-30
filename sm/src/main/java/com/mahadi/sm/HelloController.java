@@ -1,5 +1,6 @@
 package com.mahadi.sm;
 
+import com.mahadi.sm.dto.ProfileDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +37,12 @@ public class HelloController {
     public String searchRequestHeader(@RequestHeader HttpHeaders headers ) {
         return "Hello " + headers.get("aa");
     }
+
+    @GetMapping("/show")
+    public String show(@RequestBody ProfileDto profile) {
+        return "Hello World"+ profile;
+    }
+
 
 //    @GetMapping({"{userid}/posts/{postid}"})
 //    public String sayHello(@PathVariable Map<String,String> j   ) {
