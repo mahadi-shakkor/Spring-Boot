@@ -51,6 +51,41 @@ public class HelloController {
                 .header("Content-Type", "application/json")
                 .body(requestEntity.getBody().toString());
     }
+
+    @GetMapping({"","/","/v1"})
+    public ResponseEntity<String> defaultPathVersion(){
+        return ResponseEntity.ok("return from v1");
+    }
+    @GetMapping("/v2")
+    public ResponseEntity<String> defaultPathVersionV2(){
+        return ResponseEntity.ok("return from v2");
+    }
+    @GetMapping(params="version=1")
+    public ResponseEntity<String> param1PathVersion(){
+        return ResponseEntity.ok("return from v1");
+    }
+    @GetMapping(params="version=2")
+    public ResponseEntity<String> param2PathVersionV2(){
+        return ResponseEntity.ok("return from v2");
+    }
+
+    @GetMapping(headers="version=1")
+    public ResponseEntity<String> headers1PathVersion(){
+        return ResponseEntity.ok("return from v1");
+    }
+    @GetMapping(headers="version=2")
+    public ResponseEntity<String> headers2PathVersionV2(){
+        return ResponseEntity.ok("return from v2");
+    }
+
+    @GetMapping(produces ="application/v1+json")
+    public ResponseEntity<String> produces1PathVersion(){
+        return ResponseEntity.ok("return- from -v1");
+    }
+    @GetMapping(produces ="application/v2+json")
+    public ResponseEntity<String> produces2PathVersionV2(){
+        return ResponseEntity.ok("return- from -v2");
+    }
 }
 
 
