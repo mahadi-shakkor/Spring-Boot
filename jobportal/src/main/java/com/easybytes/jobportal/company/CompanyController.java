@@ -1,6 +1,7 @@
 package com.easybytes.jobportal.company;
 
 
+import com.easybytes.jobportal.dto.CompanyDto;
 import com.easybytes.jobportal.entity.Company;
 import com.easybytes.jobportal.service.ICompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,14 @@ public class CompanyController   {
 
 
     @GetMapping(version="1.0")
-    public ResponseEntity<List<Company>> getCompanies(){
+    public ResponseEntity<List<CompanyDto>> getCompanies(){
 
         return ResponseEntity.ok().body(companyService.getAllCompanies());
     }
+
+
+
+
+
+
 }

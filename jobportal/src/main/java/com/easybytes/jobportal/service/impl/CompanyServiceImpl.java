@@ -1,11 +1,14 @@
 package com.easybytes.jobportal.service.impl;
 
+import com.easybytes.jobportal.dto.CompanyDto;
 import com.easybytes.jobportal.entity.Company;
 import com.easybytes.jobportal.repository.CompanyRepository;
 import com.easybytes.jobportal.service.ICompanyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CompanyServiceImpl implements ICompanyService {
 
@@ -17,7 +20,24 @@ public class CompanyServiceImpl implements ICompanyService {
 
     /// @return
     @Override
-    public List<Company> getAllCompanies() {
-        return companyRepository.findAll();
+    public List<CompanyDto> getAllCompanies() {
+        return companyRepository.findAll().stream().map(this::transformToDto).collect(Collectors.toList());
+    }
+
+    private CompanyDto transformToDto(Company company) {
+        return new CompanyDto(
+                company.getId(),
+                company.getName(),
+                company.getLogo(),
+                company.getIndustry(),
+                company.getSize(),
+                company.getRating(),
+                company.getLocations(),
+                company.getFounded(),
+                company.getDescription(),
+                company.getEmployees(),
+                company.getWebsite(),
+                company.getCreatedAt()
+        );
     }
 }
