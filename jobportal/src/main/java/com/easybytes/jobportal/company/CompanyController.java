@@ -15,6 +15,6 @@ public class CompanyController   {
     @GetMapping(version="1.0")
     public ResponseEntity<String> getCompanies(){
 
-        return ResponseEntity.ok().body("Companies list");
+        return ResponseEntity.ok().body("Companies 3 3");
     }
 }
