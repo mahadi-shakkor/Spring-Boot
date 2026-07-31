@@ -2,6 +2,7 @@ package com.easybytes.jobportal.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.math.BigDecimal;
@@ -9,6 +10,7 @@ import java.time.Instant;
 
 @Entity
 @Table(name="COMPANIES")
+@Data
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
