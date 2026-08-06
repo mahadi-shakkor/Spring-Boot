@@ -3,7 +3,7 @@ package com.easybytes.jobportal.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault; // Added missing import
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 
@@ -12,7 +12,6 @@ import java.time.Instant;
 @Entity
 @Table(name = "contacts")
 public class Contact {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -36,7 +35,7 @@ public class Contact {
 
     @ColumnDefault("'NEW'")
     @Column(name = "status", nullable = false, length = 20)
-    private String status = "NEW"; // Initialized in Java
+    private String status;
 
     @Column(name = "subject", nullable = false)
     private String subject;
@@ -49,4 +48,6 @@ public class Contact {
 
     @Column(name = "user_type", nullable = false, length = 50)
     private String userType;
+
+
 }

@@ -1,4 +1,4 @@
-package com.easybytes.jobportal.service;
+package com.easybytes.jobportal.company.service;
 
 import com.easybytes.jobportal.dto.CompanyDto;
 import com.easybytes.jobportal.entity.Company;
