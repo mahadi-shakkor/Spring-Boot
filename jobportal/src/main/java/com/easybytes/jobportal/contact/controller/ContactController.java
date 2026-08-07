@@ -3,6 +3,7 @@ package com.easybytes.jobportal.contact.controller;
 
 import com.easybytes.jobportal.contact.controller.service.IContactService;
 import com.easybytes.jobportal.dto.ContactRequestDto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +21,12 @@ public class ContactController {
     private final IContactService contactService;
 
     @PostMapping(version ="1.0" )
-    public ResponseEntity<String> saveContactMessage(@RequestBody ContactRequestDto contactRequestDto) {
-//       boolean result= contactService.saveContactMessage(contactRequestDto);
-//        return result ? ResponseEntity.status(HttpStatus.CREATED).body("Req processed Successfully")
-//                : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Req processed Failed");
+    public ResponseEntity<String> saveContactMessage(@RequestBody @Valid ContactRequestDto contactRequestDto) {
+       boolean result= contactService.saveContactMessage(contactRequestDto);
+        return result ? ResponseEntity.status(HttpStatus.CREATED).body("Req processed Successfully")
+                : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Req processed Failed");
 
-        throw new RuntimeException("It is a bad day");
+//        throw new RuntimeException("It is a bad day");
 
         
 
